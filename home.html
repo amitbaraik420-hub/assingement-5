@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="navbar bg-base-100 shadow-sm">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl"><i class="fa-brands fa-github"></i>GitHub Issues Tracker</a>
+  </div>
+  <div class="flex gap-2">
+    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" /><br>
+   </div> 
+   <button class="btn btn-info space-x-2"> + New Issue</button>
+  
+   </div>
+   <br>
+   <br>
+   <br>
+   
+   <div class=" bg-base-100  gap-3 w-[1100px] m-auto">
+  <button id="buttonAll" class="btn btn-outline btn-info">All</button>
+  <button id="buttonOpen" class="btn btn-outline btn-info">Open</button>
+  <button id="buttonClosed" class="btn btn-outline btn-info">Closed</button>
+</div>
+    <br>
+   <br>
+   <br>
+  <div class="w-[1100px] h-[90px] border-1 m-auto">
+    <img class="w-[80px] h-[80px] p-[5px]" src="assest/B13-A5-Github-Issue-Tracker/assets/Aperture.png">
+    <h1 id="headcounter" class="relative bottom-[70px] left-[75px] font-bold text-xl">70 Issues</h1>
+    <p class="relative bottom-[70px] left-[75px]  text-gray-400">Track and manage your project issues</p>
+  </div>
+
+    <!-- :[{"id":1,"title":"Fix navigation menu on mobile devices","description":"The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.","status":"open","labels":["bug","help wanted"],"priority":"high","author":"john_doe","assignee":"jane_smith","createdAt":"2024-01-15T10:30:00Z","updatedAt":"2024-01-15T10:30:00Z"} -->
+   <section id="ALLissue" class="grid grid-cols-4 gap-4 w-[1100px]  w-[1100px] m-auto py-[15px]">
+      
+  
+
+</section>
+
+ <img src="assest/B13-A5-Github-Issue-Tracker/assets/Open-Status.png">
+ <p id="hello"><i class="fa-regular fa-circle-check"></i></p>  
+
+
+
+
+
+
+
+
+  <script src="home.js" defer></script>
+</body>
+</html>
