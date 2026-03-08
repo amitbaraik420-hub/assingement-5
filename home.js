@@ -58,20 +58,24 @@
           const statusClass = statusValue === "open" 
     ? "assest/B13-A5-Github-Issue-Tracker/assets/Open-Status.png" 
     : statusValue === "closed" 
-        ? "assest/B13-A5-Github-Issue-Tracker/assets/Aperture.png" 
-        : "assest/B13-A5-Github-Issue-Tracker/assets/Unknown-Status.png"; 
+        ? "assest/B13-A5-Github-Issue-Tracker/assets/closed-status.png" : "assest/B13-A5-Github-Issue-Tracker/assets/Unknown-Status.png"; 
+        const borderColor = statusValue === "open" ? "border-t-green-400" : statusValue === "closed" ? "border-t-purple-500" : "border-t-gray-300";
       
          let div = document.createElement("div");
         div.innerHTML = `
-             <div class="w-[260px] h-[330px] border-1 rounded-md shadow-sm p-[10px] bg-white">
+                  
+
+
+
+             <div onclick="sengleIssure(${elemen.id})" class=" w-[260px] h-[330px] ${borderColor} border-2 rounded-md shadow-sm p-[10px] bg-white">
                  <div class="flex justify-between">
                     <img class="mx-4 my-2" src="${statusClass}">
-                    <button class="btn btn-xs mx-2 my-2">${elemen.priority}</button>
+                    <button class="btn btn-xs mx-2 my-2 text-red-300">${elemen.priority}</button>
                 </div>
                <div class="text-xs text-gray-400">#${elemen.id}</div>
                 <div class="font-bold text-lg line-clamp-1">${elemen.title}</div>
                 <div class="text-gray-500 text-sm line-clamp-2">${elemen.description}</div>
-                 <div class="flex flex-wrap gap-2 mt-2">
+                 <div class="flex flex-wrap gap-2 mt-2 bg-yellow-100">
                      ${elemen.labels.map(label => `<span class="badge badge-outline">${label}</span>`).join('')}
                  </div>
                 <div class="border-t border-gray-200 mt-4 pt-2">
@@ -86,6 +90,63 @@
  };
 
 
+const sengleIssure = (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            
+            const issueDetail = data.data || data;
+            
+            displayModal(issueDetail);
+        })
+        .catch(err => console.error("Error fetching data:", err));
+};
+
+
+const displayModal = (data) => {
+    
+    document.getElementById('modal-title').innerText = data.title || "No Title";
+    document.getElementById('modal-id').innerText = data.id || "N/A";
+    document.getElementById('modal-description').innerText = data.description || "No description";
+    document.getElementById('modal-status').innerText = data.status || "Unknown";
+    document.getElementById('modal-priority').innerText = data.priority || "Normal";
+    document.getElementById('modal-author').innerText = data.author || "Anonymous";
+
+    if (data.updatedAt) {
+        document.getElementById('modal-date').innerText = new Date(data.updatedAt).toLocaleDateString();
+    }
+
+    
+    const modal = document.getElementById('my_modal_1');
+    if (modal) {
+        modal.showModal();
+    }
+};
 
 
 
+
+const searchInput = document.getElementById("searchbutton"); 
+
+if (searchInput) {
+    
+    searchInput.addEventListener("input", (event) => {
+        const query = event.target.value.toLowerCase();
+
+        
+        const filteredIssues = allData.filter(issue => {
+            return (
+                issue.title.toLowerCase().includes(query) || 
+                issue.description.toLowerCase().includes(query)
+            );
+        });
+
+        
+        FetchFunction1(filteredIssues);
+        
+        
+        document.getElementById("headcounter").innerText = `${filteredIssues.length} Issues Found`;
+    });
+}
