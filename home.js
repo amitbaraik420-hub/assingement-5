@@ -67,7 +67,7 @@
 
 
 
-             <div onclick="sengleIssure(${elemen.id})" class=" w-[260px] h-[330px] ${borderColor} border-2 rounded-md shadow-sm p-[10px] bg-white">
+             <div onclick="sengleIssure(${elemen.id})" class=" w-[260px] h-[330px] ${borderColor} border-2 rounded-md border-white-500 shadow-sm p-[10px] bg-white">
                  <div class="flex justify-between">
                     <img class="mx-4 my-2" src="${statusClass}">
                     <button class="btn btn-xs mx-2 my-2 text-red-300">${elemen.priority}</button>

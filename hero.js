@@ -7,7 +7,7 @@ button.addEventListener("click", function(event) {
  let password = document.getElementById("password");
  let Passwordvalue = password.value;
  if(Newvalue == "admin" && Passwordvalue == "admin123"){
-     window.location.assign("/home.html");
+     window.location.assign("./home.html");
  }
  else{
         alert("Invalid username or password. Please try again.");
